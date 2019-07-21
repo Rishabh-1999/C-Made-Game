@@ -233,7 +233,6 @@ int main() {
 	int diff;
 	char c;
 	intial();
-	string name;
 	start:
 	gotoxy(15,8);
 	cout<<"Fighter game";
