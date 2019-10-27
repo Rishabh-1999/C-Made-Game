@@ -3,7 +3,9 @@
 #include <conio.h>
 #include<windows.h>
 #include <vector>
+
 using namespace std;
+
 bool gameOver;
 string name;
 const int width = 22;
@@ -21,6 +23,7 @@ void gotoxy(int x,int y)
 	coord.Y=y;
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),coord);
 }
+
 void intial()
 {
 	const int width=25;
@@ -46,16 +49,20 @@ void intial()
 		cout<<'*';
 	}
 }
+
 void load(){
     int row,col,r,c,q;
     gotoxy(16,10);
     printf("loading...");
     gotoxy(10,11);
-    for(r=1;r<=20;r++){
-    Sleep(200);//to display the character slowly
-    printf("%c",177);}
+    for(r=1;r<=20;r++)
+	{
+		Sleep(200);				//to display the character slowly
+		printf("%c",177);
+	}
     getch();
 }
+
 class enemy
 {
 	public:
@@ -74,16 +81,17 @@ class enemy
 			high++;
 			difficulity=high;
 			if(high<4)
-			for(int i=0;i<high;i++)
-			{
-				int Y=0;
-				int X=rand()%height;
-				enemyX.push_back(X);
-				enemyY.push_back(Y);
-			}
+				for(int i=0;i<high;i++)
+				{
+					int Y=0;
+					int X=rand()%height;
+					enemyX.push_back(X);
+					enemyY.push_back(Y);
+				}
 		}
 	friend class fighter;
 };
+
 class fighter{
 	public:
 		int x,nBu;
@@ -127,9 +135,9 @@ class fighter{
 		{
 			for(int i=0;i<e.enemyY.size();i++)
 			{
-			e.enemyY[i]++;
-			if(e.enemyY[i]>22)
-			gameOver=true;
+				e.enemyY[i]++;
+				if(e.enemyY[i]>22)
+					gameOver=true;
 			}
 			switch(dir)
 			{
@@ -151,6 +159,7 @@ class fighter{
 		}
 		friend class enemy;
 };
+
 class board{
 	public:
 		board()
@@ -167,8 +176,8 @@ class board{
 				for(int j=0;j<height;j++)
 				{
 					if(mat[i][j]!='|')
-				mat[i][j]=' ';
-			}
+					mat[i][j]=' ';
+				}	
 			}	
 			for(int i=0;i<width;i++)
 			{
@@ -176,25 +185,24 @@ class board{
 			 	{
 			 		for(int k=0;k<e1.enemyX.size();k++)
 			 		if(e1.enemyX[k]==j && e1.enemyY[k]==i)
-			 		mat[i][j]='e';
-			 		
+						mat[i][j]='e';
 			 		for(int k=0;k<e1.enemyX.size();k++)
 			 		{
-			 		if(mat[e1.enemyY[k]][e1.enemyX[k]]=='|' )
-			 		{
-			 			score+=10;
-			 			mat[i][j]=' ';
-			 			it=e1.enemyY.begin()+k;
-			 			e1.enemyY.erase(e1.enemyY.begin()+k);
-			 			it=e1.enemyX.begin()+k;
-			 			e1.enemyX.erase(e1.enemyX.begin()+k);
-			 			e1.difficulity--;
-			 			if(e1.difficulity==0)
-			 			e1.increase();
+						if(mat[e1.enemyY[k]][e1.enemyX[k]]=='|' )
+						{
+							score+=10;
+							mat[i][j]=' ';
+							it=e1.enemyY.begin()+k;
+							e1.enemyY.erase(e1.enemyY.begin()+k);
+							it=e1.enemyX.begin()+k;
+							e1.enemyX.erase(e1.enemyX.begin()+k);
+							e1.difficulity--;
+							if(e1.difficulity==0)
+							e1.increase();
+						}
 					}
-				}
 			 		if(j==f1.x)
-			 		mat[19][j]='^';
+						mat[19][j]='^';
 			 		if(mat[i][j]=='|')
 			 		{
 			 			mat[i-1][j]='|';
@@ -203,32 +211,29 @@ class board{
 				 }
 			}
 			for(int i=0;i<width+2;i++)
-			{
 			 	cout<<'*';
-			}
 			cout<<endl;
 			for(int i=0;i<width;i++)
 			{
 				for(int j=0;j<height;j++)
 				{
 					if(j==0 && i==0)
-			 		cout<<'*';
+						cout<<'*';
 					else if(j==0 && i!=0)
-			 		cout<<'*';
+						cout<<'*';
 					cout<<mat[i][j];
 					if(j==width-1)
-			 		cout<<'*';
+						cout<<'*';
 				}
 				cout<<endl;	
 			}		
 			for(int i=0;i<height+2;i++)
-			{
 				cout<<'*';
-			}
 			cout<<endl<<"Name :"<<name<<" Score :"<<score<<endl;
 		}
 		friend class enemy;
 };
+
 int main() {
 	int diff;
 	char c;

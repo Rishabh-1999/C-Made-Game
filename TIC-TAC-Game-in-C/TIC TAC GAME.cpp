@@ -19,12 +19,11 @@ class body
 	    	for(int j=0;j<11;j++)
 	    	{
 	    		if(i==1 || i==3)
-	    		mat[i][j]='-';
+	    			mat[i][j]='-';
 	    		else if(j==3 || j==7)
-	    		mat[i][j]='|';
+	    			mat[i][j]='|';
 	    		else
-	    		mat[i][j]=' ';
-
+	    			mat[i][j]=' ';
 			}
 		}
 	}
@@ -40,45 +39,45 @@ class fill1
 	{
 		if(a==1)
 		{
-		if(b==1)
-		ob11.mat[0][1]='0';
-		if(b==2)
-		ob11.mat[0][5]='0';
-		if(b==3)
-		ob11.mat[0][9]='0';
-		if(b==4)
-		ob11.mat[2][1]='0';
-		if(b==5)
-		ob11.mat[2][5]='0';
-		if(b==6)
-		ob11.mat[2][9]='0';
-		if(b==7)
-		ob11.mat[4][1]='0';
-		if(b==8)
-		ob11.mat[4][5]='0';
-		if(b==9)
-		ob11.mat[4][9]='0';
+			if(b==1)
+				ob11.mat[0][1]='0';
+			if(b==2)
+				ob11.mat[0][5]='0';
+			if(b==3)
+				ob11.mat[0][9]='0';
+			if(b==4)
+				ob11.mat[2][1]='0';
+			if(b==5)
+				ob11.mat[2][5]='0';
+			if(b==6)
+				ob11.mat[2][9]='0';
+			if(b==7)
+				ob11.mat[4][1]='0';
+			if(b==8)
+				ob11.mat[4][5]='0';
+			if(b==9)
+				ob11.mat[4][9]='0';
 	    }
 	    else if(a==2)
 	    {
-	    if(b==1)
-		ob11.mat[0][1]='x';
-		if(b==2)
-		ob11.mat[0][5]='x';
-		if(b==3)
-		ob11.mat[0][9]='x';
-		if(b==4)
-		ob11.mat[2][1]='x';
-		if(b==5)
-		ob11.mat[2][5]='x';
-		if(b==6)
-		ob11.mat[2][9]='x';
-		if(b==7)
-		ob11.mat[4][1]='x';
-		if(b==8)
-		ob11.mat[4][5]='x';
-		if(b==9)
-		ob11.mat[4][9]='x';
+		    if(b==1)
+				ob11.mat[0][1]='x';
+			if(b==2)
+				ob11.mat[0][5]='x';
+			if(b==3)
+				ob11.mat[0][9]='x';
+			if(b==4)
+				ob11.mat[2][1]='x';
+			if(b==5)
+				ob11.mat[2][5]='x';
+			if(b==6)
+				ob11.mat[2][9]='x';
+			if(b==7)
+				ob11.mat[4][1]='x';
+			if(b==8)
+				ob11.mat[4][5]='x';
+			if(b==9)
+				ob11.mat[4][9]='x';
 		}
 	}  	
 };
@@ -96,80 +95,79 @@ class win1
 		if(ob12.mat[0][1]=='0' && ob12.mat[0][5]=='0')
 		{
 			if(ob12.mat[0][9]=='0')
-			flag=1;
+				flag=1;
 		}
 		if(ob12.mat[0][1]=='0' && ob12.mat[2][5]=='0')
 		{
 			if(ob12.mat[4][9]=='0')
-			flag=1;
+				flag=1;
 		}
 		if(ob12.mat[0][5]=='0' && ob12.mat[2][5]=='0')
 		{
 			if(ob12.mat[4][5]=='0')
-			flag=1;
+				flag=1;
 		}
 		if(ob12.mat[0][9]=='0' && ob12.mat[2][9]=='0')
 		{
 			if(ob12.mat[4][9]=='0')
-			flag=1;
+				flag=1;
 		}
 		if(ob12.mat[0][9]=='0' && ob12.mat[2][5]=='0')
 		{
 			if(ob12.mat[4][1]=='0')
-			flag=1;
+				flag=1;
 		}
 		if(ob12.mat[2][1]=='0' && ob12.mat[2][5]=='0')
 		{
 			if(ob12.mat[2][9]=='0')
-			flag=1;
+				flag=1;
 		}
 		if(ob12.mat[4][1]=='0' && ob12.mat[4][5]=='0')
 		{
 			if(ob12.mat[4][9]=='0')
-			flag=1;
+				flag=1;
 		}
 		
 		//second player
-		
 		if(ob12.mat[0][1]=='x' && ob12.mat[2][1]=='x')
 		{
 			if(ob12.mat[4][1]=='x')
-			flag=2;
+				flag=2;
 		}
 		if(ob12.mat[0][1]=='x' && ob12.mat[0][5]=='x')
 		{
 			if(ob12.mat[0][9]=='x')
-			flag=2;
+				flag=2;
 		}
 		if(ob12.mat[0][1]=='x' && ob12.mat[2][5]=='x')
 		{
 			if(ob12.mat[4][9]=='x')
-			flag=2;
+				flag=2;
 		}
 		if(ob12.mat[0][5]=='x' && ob12.mat[2][5]=='x')
 		{
 			if(ob12.mat[4][5]=='x')
-			flag=2;
+				flag=2;
 		}
 		if(ob12.mat[0][9]=='x' && ob12.mat[2][9]=='x')
 		{
 			if(ob12.mat[4][9]=='x')
-			flag=2;
+				flag=2;
 		}
 		if(ob12.mat[0][9]=='x' && ob12.mat[2][5]=='x')
 		{
 			if(ob12.mat[4][1]=='x')
-			flag=2;
+				flag=2;
 		}
 		if(ob12.mat[2][1]=='x' && ob12.mat[2][5]=='x')
 		{
 			if(ob12.mat[2][9]=='x')
-			flag=2;
+				flag=2;
 		}
 		if(ob12.mat[4][1]=='x' && ob12.mat[4][5]=='x')
 		{
 			if(ob12.mat[4][9]=='x')
-			flag=2;
+				flag=2;
 		}
 	}
 };
@@ -188,6 +186,7 @@ class print
 		}		
 	}
 };
+
 int main()
 {
 	start:
@@ -216,7 +215,7 @@ int main()
 			cout<<"DO YOU WANT TO PLAY AGAIN(y/n) : ";
 			cin>>choice;
 			if(choice=='y')
-			system("CLS");
+				system("CLS");
 			goto start;
 			break;
 		}
@@ -227,11 +226,11 @@ int main()
 			cin>>choice;
 			if(choice=='y')
 			{
-			system("CLS");
-			goto start;
+				system("CLS");
+				goto start;
 		    }
 		    else
-		    cout<<"GAME OVER";
+		    	cout<<"GAME OVER";
 			break;
 		}
 		cout<<"PLAYER "<<name2<<" ENTER CHOICE : ";
@@ -245,7 +244,7 @@ int main()
 			cout<<"DO YOU WANT TO PLAY AGAIN(y/n) : ";
 			cin>>choice;
 			if(choice=='y')
-			system("CLS");
+				system("CLS");
 			goto start;
 			break;
 		}
@@ -255,9 +254,10 @@ int main()
 			cout<<"DO YOU WANT TO PLAY AGAIN(y/n) : ";
 			cin>>choice;
 			if(choice=='y')
-			system("CLS");
+				system("CLS");
 			goto start;
 			break;
 		}
 	}
+	return 0;
 }

@@ -29,19 +29,23 @@ void intial()
 {
 	const int width=25;
 	const int height=35;
-	for(int i=0;i<height+2;i++) {
+	for(int i=0;i<height+2;i++)
+	{
 		gotoxy(i,0);
 		cout<<'*';
 	}
-	for(int i=0;i<width+2;i++) {
+	for(int i=0;i<width+2;i++)
+	{
 		gotoxy(height+2,i);
 		cout<<'*';
 	}
-	for(int i=0;i<height+2;i++) {
+	for(int i=0;i<height+2;i++)
+	{
 		gotoxy(i,width+2);
 		cout<<'*';
 	}
-	for(int i=0;i<width+2;i++) {
+	for(int i=0;i<width+2;i++)
+	{
 		gotoxy(0,i);
 		cout<<'*';
 	}
@@ -53,9 +57,11 @@ void load()
     gotoxy(16,10);
     printf("loading...");
     gotoxy(10,11);
-    for(r=1;r<=20;r++){
-    Sleep(200);//to display the character slowly
-    printf("%c",177);}
+    for(r=1;r<=20;r++)
+	{
+    	Sleep(200);			//to display the character slowly
+    	printf("%c",177);
+	}
     getch();
 }
 
@@ -64,10 +70,9 @@ class food
 	public:
 		int frutiX,frutiY,fn=0;
 		char fv=0;
-		
 		food(){}
-		
-		food(int y) {
+		food(int y)
+		{
 			frutiX=rand()%width;
 			frutiY=rand()%height;
 			fn=rand()%4;
@@ -80,10 +85,9 @@ class snake
 {
 	public:
 		int x,y,tailX[50],tailY[50],nTail;
-		
 		snake(){}
-		
-		snake(int y) {
+		snake(int y)
+		{
 			x=rand()%width;
 			y=rand()%height;
 			dir=STOP;
@@ -92,7 +96,8 @@ class snake
 			nTail=1;
 		}
 		
-		void input() {
+		void input()
+		{
 			if(_kbhit())
 			{
 				switch(_getch())
@@ -121,13 +126,15 @@ class snake
 			}
 		}
 		
-		void movement(food &f) {
+		void movement(food &f)
+		{
 			int prevX = tailX[0];
 			int prevY = tailY[0];
 			int prev2X,prev2Y;
 			tailX[0]=x;
 			tailY[0]=y;
-			for(int i=1;i<nTail;i++) {
+			for(int i=1;i<nTail;i++)
+			{
 				prev2X=tailX[i];
 				prev2Y=tailY[i];
 				tailX[i]=prevX;
@@ -153,14 +160,15 @@ class snake
 					break; 
 			}
 			if(x>=width) 
-			x = 0;
+				x = 0;
 			else if(x<0)
-			x=width-1;
+				x=width-1;
 			if(y>=height) 
-			y = 0;
+				y = 0;
 			else if(y<0)
-			y=height-1;
-			for(int i=1;i<nTail;i++) {
+				y=height-1;
+			for(int i=1;i<nTail;i++)
+			{
 				if(tailX[i]==x && tailY[i]==y)
 				gameOver=true;
 			}
@@ -182,7 +190,8 @@ class snake
 class board
 {
 	public:
-		board() {
+		board()
+		{
 			gameOver=false;
 			score=0;
 		}
@@ -190,20 +199,24 @@ class board
 		void Draw(snake s1,food f1)
 		{
 			system("CLS");				//system clear
-			for(int i=0;i<width;i++) {
+			for(int i=0;i<width;i++)
+			{
 				for(int j=0;j<height;j++)
 				mat[i][j]=' ';
 			}	
-			for(int i=0;i<width;i++) {
-				for(int j=0;j<height;j++) {
+			for(int i=0;i<width;i++)
+			{
+				for(int j=0;j<height;j++)
+				{
 			 		if(i==s1.y && j==s1.x)
-			 		mat[i][j]='H';
+			 			mat[i][j]='H';
 			 		else if(i==f1.frutiY && j==f1.frutiX)
-			 		mat[i][j]=fo[f1.fn];
+			 			mat[i][j]=fo[f1.fn];
 			 		else
 			 		{
 			 			int h=0;
-			 			for(int k=0;k<s1.nTail;k++) {
+			 			for(int k=0;k<s1.nTail;k++)
+						{
 			 				if(s1.tailX[k]==j && s1.tailY[k]==i && s1.nTail>(k+1))
 			 					mat[i][j+h++]='#';
 							else if(s1.tailX[k]==j && s1.tailY[k]==i && s1.nTail>(k))
@@ -215,15 +228,17 @@ class board
 			for(int i=0;i<width+2;i++)
 			 	cout<<'*';
 			cout<<endl;
-			for(int i=0;i<width;i++) {
-				for(int j=0;j<height;j++) {
+			for(int i=0;i<width;i++)
+			{
+				for(int j=0;j<height;j++)
+				{
 					if(j==0 && i==0)
-			 		cout<<'*';
+			 			cout<<'*';
 					else if(j==0 && i!=0)
-			 		cout<<'*';
+			 			cout<<'*';
 					cout<<mat[i][j];
 					if(j==width-1)
-			 		cout<<'*';
+			 			cout<<'*';
 				}
 				cout<<endl;	
 			}		
@@ -276,9 +291,9 @@ int main() {
 		s.input();
 		s.movement(f);
 		if(score>=50)
-		diff=25;
+			diff=25;
 		if(score>=100)
-		diff =10;
+			diff =10;
 		Sleep(diff);
 	}
 	cout<<"Do you want to play again ? (Y/N)";
